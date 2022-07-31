@@ -22,7 +22,7 @@ Before you start - subscribe to our news channels:
 
 <div align="center">
   
-| [Discord Autonomy](https://t.me/palomachain) | [Twitter Autonomy](https://twitter.com/paloma_chain) |
+| [Discord Autonomy](https://discord.gg/KMZqFXg4kj) | [Twitter Autonomy](https://twitter.com/AutonomyHQ) |
 |:--:|:--:|
   
 </div>
