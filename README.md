@@ -33,9 +33,109 @@ Before you start - subscribe to our news channels:
  
 </div>
 
+### Deployment of the Autonomy node.
+
+Deploy the **Autonomy** [node deployment](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) with **Akashlytics** ([Instructions for use here](https://github.com/Dimokus88/guides/blob/main/Akashlytics/EN-guide.md)) by installing your the password for the **root** user and the node name in the variables.
+
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/23629420/182032552-04d768ff-ac90-4592-9d38-2e00e8fb4455.png)
+ 
+</div>
+
+At this stage, the **RPC** node is deployed. Navigating to the forwarded port **26657** in the ```LEASES``` tab, the node's websocket will open, where its up-to-date information will be available.
+
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png)
+
+![image](https://user-images.githubusercontent.com/23629420/182032818-069eef95-8242-459f-b503-ad8322261482.png)
+ 
+</div>
+
+If you are interested in a validator node, skip to the next paragraph.
+
+### Run the Autonomy validator
+
+Connect to the running node via **SSH** protocol using port forwarded **22**, user **roo**t and password you set in **deploy.yml**:
+
+![image](https://user-images.githubusercontent.com/23629420/182032966-3fa2ffae-5348-4a2c-a4e8-5d33c57ba320.png)
+
+Run:
+
+```
+source ~/.bashrc
+```
+
+Open config.toml:
+
+```
+nano /root/.autonomy/config/config.toml
+```
+
+* In the **State Sync** section, change the field value ```enable = true``` to ```enable = false```
+
+![image](https://user-images.githubusercontent.com/23629420/182035602-c88af532-321d-4f0b-84b3-32382a8f6fa8.png)
+
+Press the key combination ```ctrl+x``` , then ```'y'``` followed by the ```Enter``` key to save the changes.
+
+Restart the node service with ```sv restart autonomy``` .
+
+Check the synchronization status of the node with ```curl -s localhost:26657/status | jq .result.sync_info.catching_up``` . If the status is **false** - then you can start creating a validator. If the status is **true** - wait for full synchronization.
+
+* Create an **Autonomy** wallet or import by **seed** phrase (Create and replace <WALLET_NAME> with your wallet name):
+
+To create a wallet, use the command **(Save the SEED phrase otherwise you risk losing all tokens and access to the wallet!)**
+
+```
+autonomy keys add <WALLET_NAME>
+```
+
+To import a wallet by seed phrase, use the command:
+
+```
+autonomy keys add <WALLET_NAME> --recover
+```
+
+* Check the availability of tokens on the balance, to create a validator you need to have more than 1aut account (1aut = 1,000,000 uaut).
+
+```
+autonomy query bank balances <ADDRESS>
+```
+
+* The command to create a validator looks like this (with automatic delegation 1aut) :
+
+```
+autonomy tx staking create-validator --amount="1000000$denom" --pubkey=$($binary tendermint show-validator) --moniker="$MONIKER" --chain-id="$chain" --commission- rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1000000" --gas="auto" --from =<ADDRESS> --fees="5550$denom" -y
+```
+
+Check the created validator by replacing <MONIKER> with the name of your validator:
+
+```
+autonomy q staking validators -o json | jq .validators[].description.moniker | grep <MONIKER>
+```
+
+* Delegate the remaining tokens to yourself, after specifying the remaining balance (leave 1,000,000 uat to pay for transaction gas):
+
+```
+autonomy tx staking delegate <VALOPER> <amount>uaut --from <ADDRESS> --chain-id $chain --fees 555uaut -y
+```
+
+* Collect rewards:
+
+```
+autonomy tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500uaut --commission --chain-id $chain -y
+```
+Other commands for managing a node [can be found here](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/COMMAND.MD).
+
+[Back to top](https://github.com/Dimokus88/Autonomy/blob/main/README.md#autonomy-validator-node-on-akash-network)
+
+**Thank you for using Akash Network!**
+
+
 ### Развертка ноды Autonomy.
 
-Разверните деплой ноды **Autonomy** с помощью **Akashlytics**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
+Разверните [деплой ноды](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) **Autonomy** с помощью **Akashlytics**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
 
 <div align="center">
   
