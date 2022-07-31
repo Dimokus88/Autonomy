@@ -120,8 +120,8 @@ autonomy tx staking delegate <valoper> <amount>uaut --from <ADDRESS> --chain-id 
 ```
 autonomy tx distribution withdraw-rewards autonomyvaloper1nuphu4p06dlgx2se0w58z5c7yv00r5glhk0gau --from autonomy1nuphu4p06dlgx2se0w58z5c7yv00r5gl4nuaa0 --fees 500uaut --commission --chain-id $chain -y
 ```
-Другие команды по управлению нодой можете найти здесь.
+Другие команды по управлению нодой [можете найти здесь](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/Guide_RU.md#%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B-%D0%B4%D0%BB%D1%8F-%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D0%BD%D0%BE%D0%B9-%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BA%D0%B8-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%BE%D0%B2-%D1%8D%D0%BA%D0%BE%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-cosmos-sdk).
 
-К началу
+[К началу](https://github.com/Dimokus88/Autonomy/blob/main/README.md#autonomy-validator-node-on-akash-network)
 
 Спасибо что воспользовались Akash Network!
