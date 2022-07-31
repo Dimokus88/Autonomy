@@ -130,4 +130,4 @@ autonomy tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500u
 
 [К началу](https://github.com/Dimokus88/Autonomy/blob/main/README.md#autonomy-validator-node-on-akash-network)
 
-Спасибо что воспользовались Akash Network!
+**Спасибо что воспользовались Akash Network!**
