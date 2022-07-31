@@ -1,5 +1,10 @@
+<div align="center">
+  
 # Autonomy validator node on Akash Network
 # Нода валидатора сети Autonomy, развертка в Akash Network.
+  
+</div>
+  
 <div align="center">
 
 ![pba](https://user-images.githubusercontent.com/23629420/163564929-166f6a01-a6e2-4412-a4e9-40e54c821f05.png)
@@ -14,6 +19,7 @@ Before you start - subscribe to our news channels:
 |:--:|:--:|:--:|:--:|:--:|
 
 </div>
+
 <div align="center">
   
 | [Discord Autonomy](https://t.me/palomachain) | [Twitter Autonomy](https://twitter.com/paloma_chain) |
