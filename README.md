@@ -28,7 +28,7 @@ Before you start - subscribe to our news channels:
 
 ### Развертка ноды Autonomy.
 
-Разверните деплой ноды **Autonomy** с помощью **Akashlytics** (https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md) установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
+Разверните деплой ноды **Autonomy** с помощью **[Akashlytics](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)** установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
 
 ![image](https://user-images.githubusercontent.com/23629420/182032552-04d768ff-ac90-4592-9d38-2e00e8fb4455.png)
 
