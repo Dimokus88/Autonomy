@@ -73,7 +73,7 @@ source ~/.bashrc
 nano /root/.autonomy/config/config.toml
 ```
 
-В разделе **State Sync** измените значение поля ```enable = true``` на ```enable = false```
+* В разделе **State Sync** измените значение поля ```enable = true``` на ```enable = false```
 
 ![image](https://user-images.githubusercontent.com/23629420/182035602-c88af532-321d-4f0b-84b3-32382a8f6fa8.png)
 
