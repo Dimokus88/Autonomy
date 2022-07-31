@@ -20,6 +20,7 @@ Before you start - subscribe to our news channels:
 |:--:|:--:|
   
 </div>
+
 <div align="center">
   
 [English version](https://github.com/Dimokus88/paloma#english-version) | [Русская версия](https://github.com/Dimokus88/paloma#%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B0%D1%8F-%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F)
@@ -28,17 +29,25 @@ Before you start - subscribe to our news channels:
 
 ### Развертка ноды Autonomy.
 
-Разверните деплой ноды **Autonomy** с помощью **[Akashlytics](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)** установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
+Разверните деплой ноды **Autonomy** с помощью **Akashlytics**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
 
+<div align="center">
+  
 ![image](https://user-images.githubusercontent.com/23629420/182032552-04d768ff-ac90-4592-9d38-2e00e8fb4455.png)
+ 
+</div>
 
 На данном этапе развернута **RPC** нода. Перейдя на переадресованный порт **26657** во вкладке ```LEASES``` откроется websocket ноды, где будет доступна ее актуальная информация.
 
+<div align="center">
+  
 ![image](https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png)
 
 ![image](https://user-images.githubusercontent.com/23629420/182032818-069eef95-8242-459f-b503-ad8322261482.png)
+ 
+</div>
 
-Если вас интересует нода валидатора -перейдите к следующему пункту.
+Если вас интересует нода валидатора - перейдите к следующему пункту.
 
 ### Запуск валидатора Autonomy
 
