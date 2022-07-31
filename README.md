@@ -141,6 +141,8 @@ Other commands for managing a node [can be found here](https://github.com/Dimoku
 [Back to top](https://github.com/Dimokus88/Autonomy/blob/main/README.md#autonomy-validator-node-on-akash-network)
 
 **Thank you for using Akash Network!**
+  
+___
 
 
 ### Развертка ноды Autonomy.
@@ -251,3 +253,4 @@ autonomy tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500u
 [К началу](https://github.com/Dimokus88/Autonomy/blob/main/README.md#autonomy-validator-node-on-akash-network)
 
 **Спасибо что воспользовались Akash Network!**
+  ___
