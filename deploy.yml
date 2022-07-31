@@ -5,11 +5,8 @@ services:
   app:
     image: ubuntu:latest
     env:
-#1.Раздел часной информации, неделитесь даннмы из этого раздела!
      - "my_root_password=111111" # пароль root для подключения по ssh
      - "MONIKER=" # имя ноды
-#==================================================================
-#2.Раздел переменных для работы ноды
      - "binary=autonomy"
      - "vers=v1.2.0"
      - "genesis=https://raw.githubusercontent.com/ravaliGangasani/Network/main/genesis.json"
@@ -20,12 +17,14 @@ services:
      - "gitfold=autonomy-chain"
      - "link_peer=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/PEERS"
      - "link_seed=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/SEED" 
+     - "SNAP_RPC=http://provider.europlots.com:31466"
+     - "SHIFT=2000"
      
     command:
       - "bash"
       - "-c"
     args:
-      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s  https://raw.githubusercontent.com/Dimokus88/universe/main/alphatest/main.sh | bash ; sleep infinity'
+      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s  https://raw.githubusercontent.com/Dimokus88/universe/main/node.sh | bash '
     expose:
       - port: 80
         as: 80
