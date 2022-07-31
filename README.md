@@ -214,6 +214,16 @@ autonomy tx staking create-validator --amount="1000000$denom" --pubkey=$($binary
 ```
 autonomy q staking validators -o json | jq .validators[].description.moniker | grep <MONIKER>
 ```
+  
+* Сохраните priv_validator_key.json и node_key.json скопировав содержимое файлов на вашем локальном устройстве:
+
+```
+nano /root/.autonomy/config/priv_validator_key.json
+```
+
+```
+nano /root/.autonomy/config/node_key.json
+```
 
 * Делегируйте на себя оставшиеся токены, предварительно уточнив оставшийся баланс (оставьте 1 000 000 uat для оплаты газа транзакций):
 
