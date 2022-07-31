@@ -115,6 +115,16 @@ Check the created validator by replacing <MONIKER> with the name of your validat
 autonomy q staking validators -o json | jq .validators[].description.moniker | grep <MONIKER>
 ```
 
+* Save priv_validator_key.json and node_key.json by copying the contents of the files on your local device:
+
+```
+nano /root/.autonomy/config/priv_validator_key.json
+```
+
+```
+nano /root/.autonomy/config/node_key.json
+```  
+  
 * Delegate the remaining tokens to yourself, after specifying the remaining balance (leave 1,000,000 uat to pay for transaction gas):
 
 ```
