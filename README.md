@@ -43,7 +43,7 @@ Deploy the **Autonomy** [node deployment](https://github.com/Dimokus88/Autonomy/
  
 </div>
 
-At this stage, the **RPC** node is deployed. Navigating to the forwarded port **26657** in the ```LEASES``` tab, the node's websocket will open, where its up-to-date information will be available.
+At this stage, the **RPC** node is deployed. Navigating to the forwarded port **26657** in the ```LEASES``` tab, the node websocket will open, where its up-to-date information will be available.
 
 <div align="center">
   
@@ -83,7 +83,7 @@ Restart the node service with ```sv restart autonomy``` .
 
 Check the synchronization status of the node with ```curl -s localhost:26657/status | jq .result.sync_info.catching_up``` . If the status is **false** - then you can start creating a validator. If the status is **true** - wait for full synchronization.
 
-* Create an **Autonomy** wallet or import by **seed** phrase (Create and replace <WALLET_NAME> with your wallet name):
+* Create **Autonomy** wallet or import by **seed** phrase (Create and replace <WALLET_NAME> with your wallet name):
 
 To create a wallet, use the command **(Save the SEED phrase otherwise you risk losing all tokens and access to the wallet!)**
 
