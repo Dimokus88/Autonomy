@@ -17,8 +17,8 @@ services:
      - "gitfold=autonomy-chain"
      - "link_peer=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/PEERS"
      - "link_seed=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/SEED" 
-     - "SNAP_RPC=http://provider.europlots.com:31466"
-     - "SHIFT=2000"
+     - "SNAP_RPC=http://dimokus-autonomy.praetor.ingress.d3akash.cloud:30019"
+     - "SHIFT=1000"
      
     command:
       - "bash"
