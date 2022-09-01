@@ -149,7 +149,7 @@ ___
 Разверните [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) ноды **Autonomy** с помощью **Cloudmos (Akashlytics)**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив значения в соответствующих переменных  `deploy.yml`: 
 - **my_root_password**-свой пароль для `root` пользователя
 - **MONIKER**-имя ноды  
-- **LINK_KEY**-ссылку на прямое скачивание файла `priv_validator_key.json* 
+- **LINK_KEY**-ссылку на прямое скачивание файла `priv_validator_key.json`* 
 
 Если у вас нет `priv_validator_key.json` или вы хотите знать, как получить ссылку на прямое скачивание - обратитесь [к этой инструкции](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/README_RU.md). 
 
