@@ -170,68 +170,12 @@ ___
 Выполните:
 
 ```
-source ~/.bashrc
+source ~/.bashrc && wget -q -O $binary.sh https://raw.githubusercontent.com/Dimokus88/universe/main/script/create_validator.sh && chmod +x $binary.sh && sudo /bin/bash $binary.sh
 ```
 
-Откройте config.toml:
+Следуйте подсказкам выполнения скрипта.
 
-```
-nano /root/.autonomy/config/config.toml
-```
-
-* Стрелкой вниз переместите курсор до раздела **State Sync** и  измените значение поля ```enable = true``` на ```enable = false```
-
-![image](https://user-images.githubusercontent.com/23629420/182035602-c88af532-321d-4f0b-84b3-32382a8f6fa8.png)
-
-Нажмите сочетание клавиш ```ctrl+x``` , затем ```'y'``` и клавишу ```Enter```, сохранив изменения.
-
-Перезапустите службу ноды командой ```sv restart autonomy``` .
-
-Проверьте статус синхронизации ноды командой ```curl -s localhost:26657/status | jq .result.sync_info.catching_up``` . Если статус **false** - то можете приступить к созданию валидатора. Если статус **true** - дождитесь полной синхронизации.
-
-* Создайте кошелек **Autonomy** или импортируйте по **seed** фразе(Придумайте и змените <WALLET_NAME> своим именем кошелька):
-
-Для создания кошелька используйте команду **(Сохраните SEED фразу иначе вы рискуете потерять все токены и доступ к кошельку!)**
-
-```
-autonomy keys add <WALLET_NAME>
-```
-
-Для импорта кошелька по seed фразе используйте команду:
-
-```
-autonomy keys add <WALLET_NAME> --recover
-```
-
-* Проверьте наличие токенов на балансе, для создания валидатора необходимо иметь более 1aut счету(1aut = 1 000 000 uaut).
-
-```
-autonomy query bank balances <ADDRESS>
-```
-
-* Команда создания валидатора выглядит так(с автоматическим делегированием 1aut) :
-
-```
-autonomy tx staking create-validator --amount="1000000$denom" --pubkey=$($binary tendermint show-validator) --moniker="$MONIKER"	--chain-id="$chain"	--commission-rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1000000" --gas="auto"	--from=<ADDRESS> --fees="5550$denom" -y
-```
-
-Проверьте созданного валидатора заменив <MONIKER> именем вашего валидатора:
-
-```
-autonomy q staking validators -o json | jq .validators[].description.moniker | grep <MONIKER>
-```
-  
-* Сохраните priv_validator_key.json и node_key.json скопировав содержимое файлов на вашем локальном устройстве:
-
-```
-nano /root/.autonomy/config/priv_validator_key.json
-```
-
-```
-nano /root/.autonomy/config/node_key.json
-```
-
-* Делегируйте на себя оставшиеся токены, предварительно уточнив оставшийся баланс (оставьте 1 000 000 uat для оплаты газа транзакций):
+Когда валидатор будет создан можете делегировать на себя оставшиеся токены, предварительно уточнив оставшийся баланс (оставьте 1 000 000 uat для оплаты газа транзакций):
 
 ```
 autonomy tx staking delegate <VALOPER> <amount>uaut --from <ADDRESS> --chain-id $chain --fees 555uaut -y
