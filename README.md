@@ -147,15 +147,11 @@ ___
 
 ### Развертка ноды Autonomy.
 
-Разверните [деплой ноды](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) **Autonomy** с помощью **Akashlytics**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив свой пароль для **root** пользователя и имя ноды в соответствующих переменных.
+Разверните [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) ноды **Autonomy** с помощью **Cloudmos (Akashlytics)**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив: **my_root_password**-свой пароль для `root` пользователя, **MONIKER**-имя ноды  и **LINK_KEY**-ссылку на прямое скачивание файла `priv_validator_key.json`* в соответствующих переменных  `deploy.yml` (Если у вас нет `priv_validator_key.json` или вы хотите знать, как получить ссылку на прямое скачивание - обратитесь [к этой инструкции](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/README_RU.md)) . 
 
-<div align="center">
-  
-![image](https://user-images.githubusercontent.com/23629420/182032552-04d768ff-ac90-4592-9d38-2e00e8fb4455.png)
- 
-</div>
+> *Если вы хотите развернуть **RPC** ноду без ключа валидатора - оставьте `LINK_KEY` пустым или вовсе удалите эту строку. Нода запустится на сгенерированном `priv_validator_key.json`. 
 
-На данном этапе развернута **RPC** нода. Перейдя на переадресованный порт **26657** во вкладке ```LEASES``` откроется websocket ноды, где будет доступна ее актуальная информация.
+На данном этапе нода развернута . Перейдя на переадресованный порт **26657** во вкладке ```LEASES``` откроется websocket ноды, где будет доступна ее актуальная информация. Если вам нужно **создать** валидатора на вашем `priv_validator_key.json` перейдите к следующему пункту.
 
 <div align="center">
   
@@ -165,11 +161,9 @@ ___
  
 </div>
 
-Если вас интересует нода валидатора - перейдите к следующему пункту.
+### Создание валидатора Autonomy
 
-### Запуск валидатора Autonomy
-
-Подключитесь к работающей ноде по протоколу **SSH**, используя переадресованный **22** порт, пользователь **roo**t и пароль заданный вами в **deploy.yml**:
+Подключитесь к работающей ноде по протоколу **SSH**, используя переадресованный **22** порт, пользователь **root** и пароль заданный вами в **deploy.yml**:
 
 ![image](https://user-images.githubusercontent.com/23629420/182032966-3fa2ffae-5348-4a2c-a4e8-5d33c57ba320.png)
 
