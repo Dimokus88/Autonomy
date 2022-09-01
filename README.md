@@ -144,7 +144,6 @@ Other commands for managing a node [can be found here](https://github.com/Dimoku
   
 ___
 
-
 ### Развертка ноды Autonomy.
 
 Разверните [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) ноды **Autonomy** с помощью **Cloudmos (Akashlytics)**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив значения в соответствующих переменных  `deploy.yml`: 
