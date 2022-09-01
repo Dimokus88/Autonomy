@@ -35,113 +35,61 @@ Before you start - subscribe to our news channels:
 
 ### Deployment of the Autonomy node.
 
-Deploy the **Autonomy** [node deployment](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) with **Akashlytics** ([Instructions for use here](https://github.com/Dimokus88/guides/blob/main/Akashlytics/EN-guide.md)) by installing your the password for the **root** user and the node name in the variables.
+Deploy [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) **Autonomy** nodes with **Cloudmos (Akashlytics)** ([use instructions here] (https://github.com/Dimokus88/guides/blob/main/Akashlytics/EN-guide.md)) by setting the values ​​in the corresponding `deploy.yml` variables:
+- **my_root_password** - your password for the `root` user.
+- **MONIKER**-node name.
+- **LINK_KEY**-link to direct download of `priv_validator_key.json`* file.
+
+If you don't have a `priv_validator_key.json` or want to know how to get a direct download link, refer to [this guide](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/ README_EN.md).
+
+> *If you want to deploy an **RPC** node without a validator key, leave `LINK_KEY` blank or remove this line altogether. The node will run on the generated `priv_validator_key.json`.
+
+At this stage, the node is deployed. Navigating to the forwarded port **26657** in the `LEASES` tab, the `websocket` of the node will open, where its up-to-date information will be available. If you need to **create** a validator on your `priv_validator_key.json` go to the next step.
 
 <div align="center">
-  
-![image](https://user-images.githubusercontent.com/23629420/182032552-04d768ff-ac90-4592-9d38-2e00e8fb4455.png)
- 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png" width=45% align="left" </p>
+</p>
+
 </div>
 
-At this stage, the **RPC** node is deployed. Navigating to the forwarded port **26657** in the ```LEASES``` tab, the node websocket will open, where its up-to-date information will be available.
+### Creating an Autonomy validator
 
-<div align="center">
+Connect to the running node via **SSH** using forwarded port **22**, user **root** and the password you set in **deploy.yml**:
   
-![image](https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png)
-
-![image](https://user-images.githubusercontent.com/23629420/182032818-069eef95-8242-459f-b503-ad8322261482.png)
- 
-</div>
-
-If you are interested in a validator node, skip to the next paragraph.
-
-### Run the Autonomy validator
-
-Connect to the running node via **SSH** protocol using port forwarded **22**, user **roo**t and password you set in **deploy.yml**:
-
-<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032966-3fa2ffae-5348-4a2c-a4e8-5d33c57ba320.png" width=30% </p>
+<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032966-3fa2ffae-5348-4a2c-a4e8-5d33c57ba320.png" width=60% </p>
 
 Run:
 
 ```
-source ~/.bashrc
+source ~/.bashrc && wget -q -O $binary.sh https://raw.githubusercontent.com/Dimokus88/universe/main/script/create_validator.sh && chmod +x $binary.sh && sudo /bin/bash $binary.sh
 ```
 
-Open config.toml:
+Follow the script execution prompts.
+
+When the validator is created, request the remaining balance:
 
 ```
-nano /root/.autonomy/config/config.toml
+$binary q bank balances $address
 ```
 
-* Use the down arrow to move the cursor to the **State Sync** section and change the field value ```enable = true``` to ```enable = false```
-
-![image](https://user-images.githubusercontent.com/23629420/182035602-c88af532-321d-4f0b-84b3-32382a8f6fa8.png)
-
-Press the key combination ```ctrl+x``` , then ```'y'``` followed by the ```Enter``` key to save the changes.
-
-Restart the node service with ```sv restart autonomy``` .
-
-Check the synchronization status of the node with ```curl -s localhost:26657/status | jq .result.sync_info.catching_up``` . If the status is **false** - then you can start creating a validator. If the status is **true** - wait for full synchronization.
-
-* Create **Autonomy** wallet or import by **seed** phrase (Create and replace <WALLET_NAME> with your wallet name):
-
-To create a wallet, use the command **(Save the SEED phrase otherwise you risk losing all tokens and access to the wallet!)**
+You can delegate the remaining tokens to yourself, but leave 1,000,000 uat to pay for transaction gas:
 
 ```
-autonomy keys add <WALLET_NAME>
-```
-
-To import a wallet by seed phrase, use the command:
-
-```
-autonomy keys add <WALLET_NAME> --recover
-```
-
-* Check the availability of tokens on the balance, to create a validator you need to have more than 1aut account (1aut = 1,000,000 uaut).
-
-```
-autonomy query bank balances <ADDRESS>
-```
-
-* The command to create a validator looks like this (with automatic delegation 1aut) :
-
-```
-autonomy tx staking create-validator --amount="1000000$denom" --pubkey=$($binary tendermint show-validator) --moniker="$MONIKER" --chain-id="$chain" --commission- rate="0.10" --commission-max-rate="0.20" --commission-max-change-rate="0.01" --min-self-delegation="1000000" --gas="auto" --from =<ADDRESS> --fees="5550$denom" -y
-```
-
-Check the created validator by replacing <MONIKER> with the name of your validator:
-
-```
-autonomy q staking validators -o json | jq .validators[].description.moniker | grep <MONIKER>
-```
-
-* Save priv_validator_key.json and node_key.json by copying the contents of the files on your local device:
-
-```
-nano /root/.autonomy/config/priv_validator_key.json
-```
-
-```
-nano /root/.autonomy/config/node_key.json
-```  
-  
-* Delegate the remaining tokens to yourself, after specifying the remaining balance (leave 1,000,000 uat to pay for transaction gas):
-
-```
-autonomy tx staking delegate <VALOPER> <amount>uaut --from <ADDRESS> --chain-id $chain --fees 555uaut -y
+$binary tx staking delegate $valoper <amount>$denom --from $address --chain-id $chain --fees 555$denom -y
 ```
 
 * Collect rewards:
 
 ```
-autonomy tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500uaut --commission --chain-id $chain -y
+$binary tx distribution withdraw-rewards $valoper --from $address --fees 500$denom --commission --chain-id $chain -y
 ```
 Other commands for managing a node [can be found here](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/COMMAND.MD).
 
 [Back to top](https://github.com/Dimokus88/Autonomy/blob/main/README.md#autonomy-validator-node-on-akash-network)
 
 **Thank you for using Akash Network!**
-  
+
 ___
 
 ### Развертка ноды Autonomy.
