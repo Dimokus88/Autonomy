@@ -6,8 +6,8 @@
 </div>
   
 <div align="center">
+<p align="center"><img src="https://user-images.githubusercontent.com/23629420/163564929-166f6a01-a6e2-4412-a4e9-40e54c821f05.png" width=60% </p>
 
-![pba](https://user-images.githubusercontent.com/23629420/163564929-166f6a01-a6e2-4412-a4e9-40e54c821f05.png)
 | [Akash Network](https://akash.network/) | [Forum Akash Network](https://forum.akash.network/) | 
 |:--:|:--:|
 ___
@@ -147,7 +147,12 @@ ___
 
 ### Развертка ноды Autonomy.
 
-Разверните [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) ноды **Autonomy** с помощью **Cloudmos (Akashlytics)**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив: **my_root_password**-свой пароль для `root` пользователя, **MONIKER**-имя ноды  и **LINK_KEY**-ссылку на прямое скачивание файла `priv_validator_key.json`* в соответствующих переменных  `deploy.yml` (Если у вас нет `priv_validator_key.json` или вы хотите знать, как получить ссылку на прямое скачивание - обратитесь [к этой инструкции](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/README_RU.md)) . 
+Разверните [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) ноды **Autonomy** с помощью **Cloudmos (Akashlytics)**  ([Инструкция по использованию здесь](https://github.com/Dimokus88/guides/blob/main/Akashlytics/RU-guide.md)) установив значения в соответствующих переменных  `deploy.yml`: 
+- **my_root_password**-свой пароль для `root` пользователя
+- **MONIKER**-имя ноды  
+- **LINK_KEY**-ссылку на прямое скачивание файла `priv_validator_key.json* 
+
+Если у вас нет `priv_validator_key.json` или вы хотите знать, как получить ссылку на прямое скачивание - обратитесь [к этой инструкции](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/README_RU.md). 
 
 > *Если вы хотите развернуть **RPC** ноду без ключа валидатора - оставьте `LINK_KEY` пустым или вовсе удалите эту строку. Нода запустится на сгенерированном `priv_validator_key.json`. 
 
@@ -163,7 +168,8 @@ ___
 ### Создание валидатора Autonomy
 
 Подключитесь к работающей ноде по протоколу **SSH**, используя переадресованный **22** порт, пользователь **root** и пароль заданный вами в **deploy.yml**:
-<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032966-3fa2ffae-5348-4a2c-a4e8-5d33c57ba320.png" width=45% </p>
+  
+<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032966-3fa2ffae-5348-4a2c-a4e8-5d33c57ba320.png" width=60% </p>
 
 Выполните:
 
@@ -173,16 +179,22 @@ source ~/.bashrc && wget -q -O $binary.sh https://raw.githubusercontent.com/Dimo
 
 Следуйте подсказкам выполнения скрипта.
 
-Когда валидатор будет создан можете делегировать на себя оставшиеся токены, предварительно уточнив оставшийся баланс (оставьте 1 000 000 uat для оплаты газа транзакций):
+Когда валидатор будет создан запросите оставшийся баланс:
 
 ```
-autonomy tx staking delegate <VALOPER> <amount>uaut --from <ADDRESS> --chain-id $chain --fees 555uaut -y
+$binary q bank balances $address
+```
+
+Можете делегировать на себя оставшиеся токены, но оставьте 1 000 000 uat для оплаты газа транзакций:
+
+```
+$binary tx staking delegate <VALOPER> <amount>$denom --from <ADDRESS> --chain-id $chain --fees 555$denom -y
 ```
 
 * Собрать награды:
 
 ```
-autonomy tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500uaut --commission --chain-id $chain -y
+$binary tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500$denom --commission --chain-id $chain -y
 ```
 Другие команды по управлению нодой [можете найти здесь](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/COMMAND.MD).
 
