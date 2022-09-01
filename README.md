@@ -187,13 +187,13 @@ $binary q bank balances $address
 Можете делегировать на себя оставшиеся токены, но оставьте 1 000 000 uat для оплаты газа транзакций:
 
 ```
-$binary tx staking delegate <VALOPER> <amount>$denom --from <ADDRESS> --chain-id $chain --fees 555$denom -y
+$binary tx staking delegate $valoper <amount>$denom --from $address --chain-id $chain --fees 555$denom -y
 ```
 
 * Собрать награды:
 
 ```
-$binary tx distribution withdraw-rewards <VALOPER> --from <ADDRESS> --fees 500$denom --commission --chain-id $chain -y
+$binary tx distribution withdraw-rewards $valoper --from $address --fees 500$denom --commission --chain-id $chain -y
 ```
 Другие команды по управлению нодой [можете найти здесь](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/COMMAND.MD).
 
