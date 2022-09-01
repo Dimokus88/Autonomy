@@ -3,156 +3,13 @@ version: "2.0"
 
 services:
   app:
-    image: ubuntu:latest
+    image: dimokus88/ubuntu:1.1
     env:
-     - "my_root_password=111111" #Root password for ssh connection.Пароль root для подключения по ssh
-     - "MONIKER=" #Node name. Имя ноды
-     - "binary=teritorid"
-     - "vers=teritori-testnet-v2"
-     - "genesis=https://raw.githubusercontent.com/TERITORI/teritori-chain/main/testnet/teritori-testnet-v2/genesis.json"
-     - "folder=.teritorid"
-     - "denom=utori"
-     - "chain=teritori-testnet-v2"
-     - "gitrep=https://github.com/TERITORI/teritori-chain"
-     - "gitfold=teritori-chain"
-     - "PEER=0b42fd287d3bb0a20230e30d54b4b8facc412c53@176.9.149.15:26656,2371b28f366a61637ac76c2577264f79f0965447@176.9.19.162:26656,2f394edda96be07bf92b0b503d8be13d1b9cc39f@5.9.40.222:26656"
-     - "SHIFT=2000"
-     - "SNAP_RPC=http://176.9.149.15:26657"
-    command:
-      - "bash"
-      - "-c"
-    args:
-      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s https://raw.githubusercontent.com/Dimokus88/universe/main/node.sh | bash '
-    expose:
-      - port: 80
-        as: 80
-        to:
-          - global: true
-      - port: 22
-        as: 22
-        to:
-          - global: true
-      - port: 26656
-        as: 26656
-        to:
-          - global: true
-      - port: 26657
-        as: 26657
-        to:
-          - global: true
-        
-    params:
-      storage:
-        data:
-          mount: /root/    
-profiles:
-  compute:
-    app:
-      resources:
-        cpu:
-          units: 2.0
-        memory:
-          size: 3Gi
-        storage:
-        - size: 5Gi
-        - name: data
-          size: 45Gi
-          attributes:
-            persistent: true
-            class: beta2
-        
-        
-  placement:
-    akash: 
-      attributes:
-            
-      pricing:
-        app:
-          denom: uakt
-          amount: 10000
-deployment:
-  app:
-    akash:
-      profile: app
-      count: 1 
-     ---
-version: "2.0"
-
-services:
-  app:
-    image: ubuntu:latest
     env:
-     - "my_root_password=111111" #Root password for ssh connection.Пароль root для подключения по ssh
-     - "MONIKER=" #Node name. Имя ноды
-     - "binary=teritorid"
-     - "vers=teritori-testnet-v2"
-     - "genesis=https://raw.githubusercontent.com/TERITORI/teritori-chain/main/testnet/teritori-testnet-v2/genesis.json"
-     - "folder=.teritorid"
-     - "denom=utori"
-     - "chain=teritori-testnet-v2"
-     - "gitrep=https://github.com/TERITORI/teritori-chain"
-     - "gitfold=teritori-chain"
-     - "PEER=0b42fd287d3bb0a20230e30d54b4b8facc412c53@176.9.149.15:26656,2371b28f366a61637ac76c2577264f79f0965447@176.9.19.162:26656,2f394edda96be07bf92b0b503d8be13d1b9cc39f@5.9.40.222:26656"
-     - "SHIFT=2000"
-     - "SNAP_RPC=http://176.9.149.15:26657"
-    command:
-      - "bash"
-      - "-c"
-    args:
-      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s https://raw.githubusercontent.com/Dimokus88/universe/main/node.sh | bash '
-    expose:
-      - port: 80
-        as: 80
-        to:
-          - global: true
-      - port: 22
-        as: 22
-        to:
-          - global: true
-      - port: 26656
-        as: 26656
-        to:
-          - global: true
-      - port: 26657
-        as: 26657
-        to:
-          - global: true
-        
-    params:
-      storage:
-        data:
-          mount: /root/    
-profiles:
-  compute:
-    app:
-      resources:
-        cpu:
-          units: 2.0
-        memory:
-          size: 3Gi
-        storage:
-        - size: 5Gi
-        - name: data
-          size: 45Gi
-          attributes:
-            persistent: true
-            class: beta2
-        
-        
-  placement:
-    akash: 
-      attributes:
-            
-      pricing:
-        app:
-          denom: uakt
-          amount: 10000
-deployment:
-  app:
-    akash:
-      profile: app
-      count: 1 
-     - "vers=v1.2.0"
+     - "my_root_password=111111" # пароль root для подключения по ssh
+     - "MONIKER=" # имя ноды
+     - "binary=autonomy"
+     - "vers=v1.2.1"
      - "genesis=https://raw.githubusercontent.com/ravaliGangasani/Network/main/genesis.json"
      - "folder=.autonomy"
      - "denom=uaut"
@@ -161,14 +18,13 @@ deployment:
      - "gitfold=autonomy-chain"
      - "link_peer=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/PEERS"
      - "link_seed=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/SEED" 
-     - "SNAP_RPC=http://dimokus-autonomy.praetor.ingress.d3akash.cloud:30019"
+     - "SNAP_RPC="
      - "SHIFT=1000"
-     
     command:
       - "bash"
       - "-c"
     args:
-      - 'apt-get update ; apt-get upgrade -y ; apt-get install -y  curl ; curl -s  https://raw.githubusercontent.com/Dimokus88/universe/main/node.sh | bash '
+      - 'curl -s  https://raw.githubusercontent.com/Dimokus88/universe/main/main.sh | bash '
     expose:
       - port: 80
         as: 80
@@ -186,10 +42,6 @@ deployment:
         as: 26657
         to:
           - global: true
-    params:
-      storage:
-        data:
-          mount: /root/    
 profiles:
   compute:
     app:
@@ -197,20 +49,13 @@ profiles:
         cpu:
           units: 2.0
         memory:
-          size: 3Gi
+          size: 4Gi
         storage:
-        - size: 5Gi
-        - name: data
-          size: 45Gi
-          attributes:
-            persistent: true
-            class: beta2
+          size: 80Gi
         
         
   placement:
-    akash: 
-      attributes:
-            
+    akash:       
       pricing:
         app:
           denom: uakt
@@ -220,3 +65,4 @@ deployment:
     akash:
       profile: app
       count: 1 
+     
