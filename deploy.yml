@@ -56,7 +56,7 @@ profiles:
         memory:
           size: 4Gi
         storage:
-          size: 80Gi
+          size: 100Gi
         
         
   placement:
