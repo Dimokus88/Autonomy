@@ -15,15 +15,15 @@ services:
 #2.Section of variables for node operation 
      - "binary=autonomy"
      - "vers=v1.2.1"
-     - "genesis=https://raw.githubusercontent.com/ravaliGangasani/Network/main/genesis.json"
+     - "genesis=https://drive.google.com/uc?export=download&id=1APXcTwlldae5cumDLygiu9wlozT6x8a-"
      - "folder=.autonomy"
      - "denom=uaut"
      - "chain=autonomy"
      - "gitrep=https://github.com/AutonomyNetwork/autonomy-chain.git"
      - "gitfold=autonomy-chain"
      - "link_peer=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/PEERS"
-     - "link_seed=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/SEED" 
-     - "SNAP_RPC="
+     #- "link_seed=https://raw.githubusercontent.com/Dimokus88/Autonomy/main/SEED" 
+     - "SNAP_RPC=https://v2.rpc.wouo.autonomy.network:443"
      - "SHIFT=1000"
     command:
       - "bash"
