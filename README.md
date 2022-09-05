@@ -40,7 +40,7 @@ Deploy [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) 
 - **MONIKER**-node name.
 - **LINK_KEY**-link to direct download of `priv_validator_key.json`* file.
 
-If you don't have a `priv_validator_key.json` or want to know how to get a direct download link, refer to [this guide](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/ README_EN.md).
+If you don't have a `priv_validator_key.json` or want to know how to get a direct download link, refer to [this guide](https://github.com/Dimokus88/guides/blob/main/Cosmos%20SDK/valkey/README_EN.md).
 
 > *If you want to deploy an **RPC** node without a validator key, leave `LINK_KEY` blank or remove this line altogether. The node will run on the generated `priv_validator_key.json`.
 
@@ -49,6 +49,7 @@ At this stage, the node is deployed. Navigating to the forwarded port **26657** 
 <div align="center">
 
 <p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png" width=45% align="left" </p>
+  
 </p>
 
 </div>
