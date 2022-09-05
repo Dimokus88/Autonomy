@@ -46,13 +46,16 @@ If you don't have a `priv_validator_key.json` or want to know how to get a direc
 
 At this stage, the node is deployed. Navigating to the forwarded port **26657** in the `LEASES` tab, the `websocket` of the node will open, where its up-to-date information will be available. If you need to **create** a validator on your `priv_validator_key.json` go to the next step.
 
+
+
 <div align="center">
 
-<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png" width=45% align="left" </p>
-  
-</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032797-70a74454-75dd-4910-8a30-9a88a1715531.png" width=45% align="left"</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/23629420/182032818-069eef95-8242-459f-b503-ad8322261482.png" width=45% </p>
 
 </div>
+
+
 
 ### Creating an Autonomy validator
 
