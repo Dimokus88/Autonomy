@@ -35,7 +35,7 @@ Before you start - subscribe to our news channels:
 
 ### Deployment of the Autonomy node.
 
-Deploy [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) **Autonomy** nodes with **Cloudmos (Akashlytics)** ([use instructions here] (https://github.com/Dimokus88/guides/blob/main/Akashlytics/EN-guide.md)) by setting the values ​​in the corresponding `deploy.yml` variables:
+Deploy [deploy.yml](https://github.com/Dimokus88/Autonomy/blob/main/deploy.yml) **Autonomy** nodes with **Cloudmos (Akashlytics)** ([use instructions here](https://github.com/Dimokus88/guides/blob/main/Akashlytics/EN-guide.md)) by setting the values ​​in the corresponding `deploy.yml` variables:
 - **my_root_password** - your password for the `root` user.
 - **MONIKER**-node name.
 - **LINK_KEY**-link to direct download of `priv_validator_key.json`* file.
